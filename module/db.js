@@ -1,13 +1,15 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('c9', 'carran', '',
+var sequelize = new Sequelize('d6ohq6badpqk4m', 'gichddwddsgsyf', 'ad347ae3f6585c9aebd6fe1fd6f2aa8e8d6892bf0663e82d4a1f8f3273e07306',
 {
-    host: 'localhost',
-    dialect: 'mysql',
+    host: 'ec2-50-19-126-219.compute-1.amazonaws.com',
+    port : 5432,
+    protocol: 'postgres',
+    dialect: 'postgres',
     operatorsAliases: false,
     pool:
     {
-        max: 5,
+        max: 20,
         min: 0,
         idle: 10000
     },
@@ -36,6 +38,7 @@ AssetModel.sync({ force: false }).then(() =>
 
 }, (reason) =>
 {
+    console.log(reason);
     console.log('create table error (asset)');
 });
 
