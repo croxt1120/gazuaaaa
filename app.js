@@ -12,7 +12,7 @@ var app = express();
 
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(logger('dev'));
 
@@ -47,15 +47,5 @@ app.use(function(err, req, res, next) {
     status : err.status || 500
   });
 });
-
-/*
-schedule.scheduleJob('* * * * * *', function(){
-  https.get('https://api.coinnest.co.kr/api/pub/ticker?coin=ink', (res) => {
-    res.on('data', (d) => {
-      process.stdout.write(d);
-    });
-  });
-});
-*/
 
 module.exports = app;

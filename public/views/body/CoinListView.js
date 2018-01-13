@@ -29,6 +29,13 @@ define([
         render : function(){
             var data = this.model.toJSON();
             data.buyPrice = this.model.get("price") * this.model.get("quantity");
+            var keys = _.keys(data);
+            for(var i=0; i<keys; i++){
+                var key =keys[i];
+                if(key != "id" && _.isNumber(data[key])){
+                    data[key] = this.numberFormat(data[key]);
+                }
+            }
             this.$el.append(this.template(data));
         },
         getCurrent : function(){
@@ -45,6 +52,11 @@ define([
             this.$(".current").text(current);
             this.$(".currentPrice").text(currentPrice);
             this.$(".percent").text(percent + "%");
+        },
+        numberFormat : function(x){
+            var parts = x.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
         }
     });
     
