@@ -30,7 +30,7 @@ define([
             var data = this.model.toJSON();
             data.buyPrice = this.model.get("price") * this.model.get("quantity");
             var keys = _.keys(data);
-            for(var i=0; i<keys; i++){
+            for(var i=0; i<keys.length; i++){
                 var key =keys[i];
                 if(key != "id" && _.isNumber(data[key])){
                     data[key] = this.numberFormat(data[key]);
@@ -49,8 +49,8 @@ define([
             var currentPrice = current * quantity;
             var percent = Math.round((currentPrice - buyprice) / buyprice * 10000) / 100;
             
-            this.$(".current").text(current);
-            this.$(".currentPrice").text(currentPrice);
+            this.$(".current").text(this.numberFormat(current));
+            this.$(".currentPrice").text(this.numberFormat(currentPrice));
             this.$(".percent").text(percent + "%");
         },
         numberFormat : function(x){
