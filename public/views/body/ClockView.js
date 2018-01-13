@@ -36,7 +36,7 @@ define([
             this.getDate(moment());
         },
         getDate : function(now){
-            var to = moment([2019,0,1]);
+            var to = moment([2018,11,28]);
             
             var days = '000' + (to.diff(now, 'days'));
             var hours = '00' + (to.diff(now, 'hours') % 24);

@@ -1,25 +1,9 @@
 var Sequelize = require('sequelize');
 
 //c9
-var sequelize = new Sequelize('groceries', 'ubuntu', '1q2w3e4r..',
-{
-    host : 'localhost',
-    dialect: 'postgres',
-    operatorsAliases: false,
-    pool:
-    {
-        max: 20,
-        min: 0,
-        idle: 10000
-    },
-});
-
-// // heroku
-// var sequelize = new Sequelize('d6ohq6badpqk4m', 'gichddwddsgsyf', 'ad347ae3f6585c9aebd6fe1fd6f2aa8e8d6892bf0663e82d4a1f8f3273e07306',
+// var sequelize = new Sequelize('groceries', 'ubuntu', '1q2w3e4r..',
 // {
-//     host: 'ec2-50-19-126-219.compute-1.amazonaws.com',
-//     port : 5432,
-//     protocol: 'postgres',
+//     host : 'localhost',
 //     dialect: 'postgres',
 //     operatorsAliases: false,
 //     pool:
@@ -29,6 +13,22 @@ var sequelize = new Sequelize('groceries', 'ubuntu', '1q2w3e4r..',
 //         idle: 10000
 //     },
 // });
+
+// // heroku
+var sequelize = new Sequelize('d6ohq6badpqk4m', 'gichddwddsgsyf', 'ad347ae3f6585c9aebd6fe1fd6f2aa8e8d6892bf0663e82d4a1f8f3273e07306',
+{
+    host: 'ec2-50-19-126-219.compute-1.amazonaws.com',
+    port : 5432,
+    protocol: 'postgres',
+    dialect: 'postgres',
+    operatorsAliases: false,
+    pool:
+    {
+        max: 20,
+        min: 0,
+        idle: 10000
+    },
+});
 
 var AssetModel = sequelize.define('asset',
 {
