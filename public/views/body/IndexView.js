@@ -6,6 +6,7 @@ define([
     'views/body/ClockView',
     'views/body/AddCoinView',
     'views/body/CoinListView',
+    'views/body/ContainerView',
 ], function(
     $,
     _,
@@ -13,7 +14,9 @@ define([
     MainImageView,
     ClockView,
     AddCoinView,
-    CoinListView
+    CoinListView,
+    ContainerView
+    
 ){
     var IndexView = Backbone.View.extend({
         initialize : function(){
@@ -23,6 +26,7 @@ define([
                 clock : null,
                 list : null,
                 add : null,
+                container : null,
             };
             
             this.render();      
@@ -43,6 +47,14 @@ define([
             
             this.elements.add = new AddCoinView();
             this.$el.append(this.elements.add.$el);
+            
+            this.elements.container = new ContainerView();
+            this.elements.container.$el.css({
+                "background-color" : "#aaa",
+                "color" : "#fff"
+            });
+            
+            this.$el.append(this.elements.container.$el);
         }
     });
     
