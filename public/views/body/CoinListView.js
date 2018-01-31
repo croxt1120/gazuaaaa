@@ -33,7 +33,12 @@ define([
             for(var i=0; i<keys.length; i++){
                 var key =keys[i];
                 if(key != "id" && _.isNumber(data[key])){
-                    data[key] = this.numberFormat(data[key], 3);
+                    if(key.toLowerCase().indexOf("price") > -1){
+                        data[key] = this.numberFormat(data[key], 0);    
+                    }else{
+                        data[key] = this.numberFormat(data[key], 3);
+                    }
+                    
                 }
             }
             this.$el.append(this.template(data));
