@@ -33,7 +33,7 @@ define([
             for(var i=0; i<keys.length; i++){
                 var key =keys[i];
                 if(key != "id" && _.isNumber(data[key])){
-                    data[key] = this.numberFormat(data[key]);
+                    data[key] = this.numberFormat(data[key], 3);
                 }
             }
             this.$el.append(this.template(data));
@@ -49,12 +49,12 @@ define([
             var currentPrice = current * quantity;
             var percent = Math.round((currentPrice - buyprice) / buyprice * 10000) / 100;
             
-            this.$(".current").text(this.numberFormat(current));
-            this.$(".currentPrice").text(this.numberFormat(currentPrice));
+            this.$(".current").text(this.numberFormat(current, 0));
+            this.$(".currentPrice").text(this.numberFormat(currentPrice, 0));
             this.$(".percent").text(percent + "%");
         },
-        numberFormat : function(x){
-            x = Math.ceil(x);
+        numberFormat : function(x, fixed){
+            x = Math.ceil(x * Math.pow(10,fixed)) / Math.pow(10,fixed);
             var parts = x.toString().split(".");
             parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return parts.join(".");
